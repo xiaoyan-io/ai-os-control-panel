@@ -23,13 +23,13 @@ function DeployFormContent({ templates }: { templates: RegistryTemplate[] }) {
 
   useEffect(() => {
     if (initialTemplateId) {
-      const template = templates.find(t => t.id === initialTemplateId);
+      const template = safeTemplates.find(t => t.id === initialTemplateId);
       if (template) {
-        setSelectedCategory(template.category);
-        setSelectedTemplate(template.id);
+        setSelectedCategory(String(template.category));
+        setSelectedTemplate(String(template.id));
       }
     }
-  }, [initialTemplateId, templates]);
+  }, [initialTemplateId, safeTemplates]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ function DeployFormContent({ templates }: { templates: RegistryTemplate[] }) {
       const newInstance = await deployInstanceAction(formData);
       setDeployResult({
         id: newInstance.id,
-        template: templates.find(t => t.id === selectedTemplate)?.name,
+        template: safeTemplates.find(t => t.id === selectedTemplate)?.name,
         node: newInstance.node,
         status: newInstance.status,
         workspacePath: newInstance.workspacePath,
