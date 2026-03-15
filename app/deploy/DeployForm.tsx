@@ -15,10 +15,11 @@ function DeployFormContent({ templates }: { templates: RegistryTemplate[] }) {
   const [isDeploying, setIsDeploying] = useState(false);
   const [deployResult, setDeployResult] = useState<any>(null);
 
-  const categories = Array.from(new Set(templates.map(t => t.category)));
+  const safeTemplates = templates || [];
+  const categories = Array.from(new Set(safeTemplates.map(t => String(t.category || '')))).filter(Boolean);
   const filteredTemplates = selectedCategory
-    ? templates.filter(t => t.category === selectedCategory)
-    : templates;
+    ? safeTemplates.filter(t => t.category === selectedCategory)
+    : safeTemplates;
 
   useEffect(() => {
     if (initialTemplateId) {
