@@ -19,7 +19,7 @@ export interface Registry {
   templates: RegistryTemplate[];
 }
 
-const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/xiaoyan-io/ai-os-hub/main/registry.yaml';
+const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/xiaoyan-io/ai-os-hub/master/registry.yaml';
 
 async function fetchFromGitHub(): Promise<Registry | null> {
   try {
