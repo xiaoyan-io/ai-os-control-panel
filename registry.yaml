@@ -1,0 +1,103 @@
+templates:
+  # Company OS
+  - id: "boss-secretary-os"
+    name: "Boss Secretary OS"
+    category: "company"
+    description: "Executive assistant system for boss-secretary workflow"
+    version: "1.0.0"
+    status: "stable"
+    tags: ["assistant", "productivity", "executive"]
+    includedRoles: ["boss", "secretary"]
+    requiredInputs: ["companyName", "apiKey"]
+    optionalInputs: ["telegramToken", "baseUrl"]
+
+  - id: "alan-boss-os"
+    name: "Alan Boss OS"
+    category: "company"
+    description: "Personal-use executive assistant template for internal summaries and directives"
+    version: "1.0.0"
+    status: "stable"
+    tags: ["personal", "executive", "management"]
+    includedRoles: ["boss", "secretary"]
+    requiredInputs: ["companyName", "apiKey"]
+    optionalInputs: ["telegramToken", "baseUrl"]
+
+  # Sales OS
+  - id: "chat-sales-os"
+    name: "Chat Sales OS"
+    category: "sales"
+    description: "AI-powered sales conversation system"
+    version: "1.0.0"
+    status: "stable"
+    tags: ["sales", "crm", "lead-gen"]
+    includedRoles: ["sales_agent", "customer"]
+    requiredInputs: ["apiKey"]
+    optionalInputs: ["telegramToken", "baseUrl"]
+
+  - id: "alan-sales-os"
+    name: "Alan Sales OS"
+    category: "sales"
+    description: "Personal-use sales follow-up template for lead intake and chat closing"
+    version: "1.0.0"
+    status: "stable"
+    tags: ["personal", "sales", "chat"]
+    includedRoles: ["sales_agent", "customer"]
+    requiredInputs: ["apiKey"]
+    optionalInputs: ["telegramToken", "baseUrl"]
+
+  # Construction OS
+  - id: "site-report-os"
+    name: "Site Report OS"
+    category: "construction"
+    description: "Construction site reporting and documentation system"
+    version: "1.0.0"
+    status: "stable"
+    tags: ["construction", "reporting", "vision"]
+    includedRoles: ["site_manager", "inspector"]
+    requiredInputs: ["apiKey"]
+    optionalInputs: ["telegramToken", "baseUrl"]
+
+  # Personal OS
+  - id: "personal-os"
+    name: "Personal OS"
+    category: "personal"
+    description: "Personal AI assistant for daily tasks"
+    version: "1.0.0"
+    status: "stable"
+    tags: ["personal", "assistant", "productivity"]
+    includedRoles: ["user", "assistant"]
+    requiredInputs: ["apiKey"]
+    optionalInputs: ["telegramToken", "baseUrl"]
+
+  - id: "alan-personal-os"
+    name: "Alan Personal OS"
+    category: "personal"
+    description: "Personal-use AI assistant for daily tasks, notes, planning and project organization"
+    version: "1.0.0"
+    status: "stable"
+    tags: ["personal", "assistant", "planning"]
+    includedRoles: ["user", "assistant"]
+    requiredInputs: ["apiKey"]
+    optionalInputs: ["telegramToken", "baseUrl"]
+
+  - id: "family-care-os"
+    name: "Family Care OS"
+    category: "personal"
+    description: "Family health and care management system"
+    version: "1.0.0"
+    status: "stable"
+    tags: ["family", "health", "care"]
+    includedRoles: ["caregiver", "family_member"]
+    requiredInputs: ["familyName", "apiKey"]
+    optionalInputs: ["telegramToken", "baseUrl"]
+
+  - id: "alan-family-care-os"
+    name: "Alan Family Care OS"
+    category: "personal"
+    description: "Personal-use family care helper for household reminders and care coordination"
+    version: "1.0.0"
+    status: "stable"
+    tags: ["personal", "family", "care"]
+    includedRoles: ["caregiver", "family_member"]
+    requiredInputs: ["familyName", "apiKey"]
+    optionalInputs: ["telegramToken", "baseUrl"]

@@ -1,0 +1,5 @@
+{
+  "name": "AI OS Control Panel",
+  "description": "Admin dashboard for managing modular AI OS templates and deployments.",
+  "requestFramePermissions": []
+}
