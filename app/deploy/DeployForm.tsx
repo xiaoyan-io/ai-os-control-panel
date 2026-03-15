@@ -254,11 +254,38 @@ function DeployFormContent({ templates }: { templates: RegistryTemplate[] }) {
             <label htmlFor="baseUrl" className="block text-sm font-medium text-zinc-300">
               Base URL
             </label>
+            <select
+              id="baseUrlPreset"
+              className="mt-2 block w-full rounded-md border-0 bg-zinc-800 py-1.5 text-zinc-100 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 font-mono"
+              onChange={(e) => {
+                const baseUrlInput = document.getElementById('baseUrl') as HTMLInputElement;
+                if (e.target.value) {
+                  baseUrlInput.value = e.target.value;
+                }
+              }}
+            >
+              <option value="">Custom...</option>
+              <option value="https://api.cli-proxy.com/v1">CLIProxyAPI (https://api.cli-proxy.com)</option>
+              <option value="https://api.openai.com/v1">OpenAI</option>
+              <option value="https://generativelanguage.googleapis.com/v1">Google Gemini</option>
+              <option value="https://api.anthropic.com">Anthropic Claude</option>
+              <option value="https://dash.qianfan.chat/v1">百度千帆</option>
+              <option value="https://dash.abcgpt.com/v1">腾讯混元</option>
+              <option value="https://api.minimax.chat/v1">MiniMax</option>
+              <option value="https://api.deepseek.com/v1">DeepSeek</option>
+              <option value="https://api.siliconflow.cn/v1">硅基流动</option>
+            </select>
+          </div>
+
+          <div className="sm:col-span-2">
+            <label htmlFor="baseUrl" className="block text-sm font-medium text-zinc-300">
+              Custom Base URL
+            </label>
             <input
               type="url"
               name="baseUrl"
               id="baseUrl"
-              defaultValue="https://"
+              placeholder="https://api.example.com/v1"
               className="mt-2 block w-full rounded-md border-0 bg-zinc-800 py-1.5 text-zinc-100 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 font-mono"
             />
           </div>
