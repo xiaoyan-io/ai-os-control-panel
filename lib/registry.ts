@@ -13,23 +13,52 @@ export interface RegistryTemplate {
   includedRoles: string[];
   requiredInputs: string[];
   optionalInputs: string[];
-  smokeTests: string[];
 }
 
 export interface Registry {
   templates: RegistryTemplate[];
 }
 
-export async function getRegistry(): Promise<Registry> {
-  // In the future, this can be replaced with a fetch() to a raw GitHub URL
-  // const response = await fetch('https://raw.githubusercontent.com/your-org/ai-os-hub/main/registry.yaml');
-  // const fileContents = await response.text();
-  
+const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/xiaoyan-io/ai-os-hub/main/registry.yaml';
+
+async function fetchFromGitHub(): Promise<Registry | null> {
+  try {
+    const response = await fetch(GITHUB_RAW_URL, { 
+      next: { revalidate: 300 } // Cache for 5 minutes
+    });
+    if (!response.ok) {
+      console.warn(`[Registry] GitHub fetch failed: ${response.status}`);
+      return null;
+    }
+    const text = await response.text();
+    const data = yaml.load(text) as Registry;
+    console.log(`[Registry] Loaded ${data.templates?.length || 0} templates from GitHub`);
+    return data;
+  } catch (error) {
+    console.warn('[Registry] GitHub fetch error:', error);
+    return null;
+  }
+}
+
+function loadLocalRegistry(): Registry {
   const filePath = path.join(process.cwd(), 'registry.yaml');
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`Registry file not found: ${filePath}`);
+  }
   const fileContents = fs.readFileSync(filePath, 'utf8');
+  return yaml.load(fileContents) as Registry;
+}
+
+export async function getRegistry(): Promise<Registry> {
+  // Try GitHub first
+  const githubData = await fetchFromGitHub();
+  if (githubData && githubData.templates) {
+    return githubData;
+  }
   
-  const data = yaml.load(fileContents) as Registry;
-  return data;
+  // Fallback to local file
+  console.log('[Registry] Using local registry.yaml');
+  return loadLocalRegistry();
 }
 
 export async function getTemplates(): Promise<RegistryTemplate[]> {
