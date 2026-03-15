@@ -265,7 +265,8 @@ function DeployFormContent({ templates }: { templates: RegistryTemplate[] }) {
               }}
             >
               <option value="">Custom...</option>
-              <option value="https://api.cli-proxy.com/v1">CLIProxyAPI (https://api.cli-proxy.com)</option>
+              <option value="https://api.networkio.nyc.mn/v1">NetworkIO</option>
+              <option value="https://api.cli-proxy.com/v1">CLIProxyAPI</option>
               <option value="https://api.openai.com/v1">OpenAI</option>
               <option value="https://generativelanguage.googleapis.com/v1">Google Gemini</option>
               <option value="https://api.anthropic.com">Anthropic Claude</option>
